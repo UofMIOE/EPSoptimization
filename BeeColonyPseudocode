@@ -3,7 +3,6 @@
 \usepackage{algorithmic}
 \makeatletter
 \makeatother
-\makeatother
 
 \begin{document}
 \begin{description}  
