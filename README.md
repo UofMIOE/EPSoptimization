@@ -1,4 +1,4 @@
-# EPSoptimization
+ # EPSoptimization
 Optimization Routines for the USAI EPS System
 
 \documentclass{article}
