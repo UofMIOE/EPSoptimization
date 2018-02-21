@@ -1,4 +1,4 @@
-##Author: Zhining Zhou, Nikil Ramanathan
+##Author: Zhining Zhou, Nikil Ramanathan,Xiyu
 #  -*- coding: utf-8 -*-
 """
 Created on Wed Feb 21 15:23:59 2018
