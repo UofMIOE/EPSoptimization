@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+##Author: Zhining Zhou
+#  -*- coding: utf-8 -*-
 """
 Created on Wed Feb 21 15:23:59 2018
 Affine Invariant MCMC Ensembles for Estimating
