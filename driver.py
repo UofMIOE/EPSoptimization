@@ -4,6 +4,7 @@ import numpy as np
 from abstract_wrapper import AbstractWrapper
 # from metaheuristic_algorithms.harmony_search import HarmonySearch
 from harmony_search import HarmonySearch
+from direct_optimization import Direct
 from ant_colony_optimization import AntColony
 from artificial_bee_colony_algorithm import ArtificialBeeColony
 import itertools
@@ -106,6 +107,10 @@ number_of_new_solution = 5
 evaporation_rate = 0.9 
 number_of_iteration_before_stop = 100
 
+
+# Declare Direct Hyperparameters
+iterations = 30
+
 # Recurse Harmony Search over GLMM Structure Combindations    
 # for m,n in zip(combination,combinationlabel):
 #     print(m)
@@ -156,6 +161,21 @@ print("Ant Colony Search X1:",result3["best_decision_variable_values"][0])
 print("Ant Search extrema(R):",result3["best_objective_function_value"])
 
 print("----------------------// end of Ant Colony Search")
+
+
+print("==============================================")
+
+# Direct 
+direct = Direct(HLMMwrapper, number_of_variables, objective)
+result4 = direct.search(iterations = iterations)
+
+print("Direct Search X1:",result4["best_decision_variable_values"][0]) 
+# print("Random Intercept for",n[0],m[0])
+# print("Random Intercept for",n[1],m[1])
+# print("Fixed Effect for", n[2],m[2])
+print("Direct Search extrema(R):",result4["best_objective_function_value"])
+
+print("----------------------// end of Direct Search")
 
 
 print("==============================================")
