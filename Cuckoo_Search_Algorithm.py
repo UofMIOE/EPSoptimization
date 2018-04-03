@@ -58,8 +58,8 @@ class CuckooSearch(BaseAlgorithm):
 #        self.__nests = np.array(self.__nests)
 
         #Initialize nest locations
-        self.__agents = np.random.uniform(self.function_wrapper.minimum_decision_variable_values()[0], self.function_wrapper.maximum_decision_variable_values()[0], (n, dimension))
-        self.__nests = np.random.uniform(self.function_wrapper.minimum_decision_variable_values()[0], self.function_wrapper.maximum_decision_variable_values()[0], (nest, dimension))
+        self.__agents = np.random.uniform(self.function_wrapper.minimum_decision_variable_values(), self.function_wrapper.maximum_decision_variable_values(), (n, dimension))
+        self.__nests = np.random.uniform(self.function_wrapper.minimum_decision_variable_values(), self.function_wrapper.maximum_decision_variable_values(), (nest, dimension))
         Pbest = self.__nests[np.array([self.function_wrapper.objective_function_value(x)
                                        for x in self.__nests]).argmax()]
         Gbest = Pbest
@@ -82,7 +82,7 @@ class CuckooSearch(BaseAlgorithm):
 
             for i in worst_nests:
                 if random() < pa:
-                    self.__nests[i] = np.random.uniform(self.function_wrapper.minimum_decision_variable_values()[0], self.function_wrapper.maximum_decision_variable_values()[0], (1, dimension))
+                    self.__nests[i] = np.random.uniform(self.function_wrapper.minimum_decision_variable_values(), self.function_wrapper.maximum_decision_variable_values(), (1, dimension))
 #                    oneNest = list()
 #                    for j in range(dimension):
 #                        oneNest.append(np.random.uniform(function_wrapper.minimum_decision_variable_values()[j], function_wrapper.maximum_decision_variable_values()[j])
@@ -109,7 +109,7 @@ class CuckooSearch(BaseAlgorithm):
 #                    else 
 #                        self.__nests[i][j] = function_wrapper.maximum_decision_variable_values()[i]
                     
-            self.__nests = np.clip(self.__nests, self.function_wrapper.minimum_decision_variable_values()[0], self.function_wrapper.maximum_decision_variable_values()[0])
+            self.__nests = np.clip(self.__nests, self.function_wrapper.minimum_decision_variable_values(), self.function_wrapper.maximum_decision_variable_values())
             self.__Levyfly(step, Pbest, n, dimension)
 
 #            for j in range(n):
@@ -120,7 +120,7 @@ class CuckooSearch(BaseAlgorithm):
 #                        self.__agents[i][j] = function_wrapper.minimum_decision_variable_values()[i]
 #                    else 
 #                        self.__agents[i][j] = function_wrapper.maximum_decision_variable_values()[i]
-            self.__agents = np.clip(self.__agents, self.function_wrapper.minimum_decision_variable_values()[0], self.function_wrapper.maximum_decision_variable_values()[0])
+            self.__agents = np.clip(self.__agents, self.function_wrapper.minimum_decision_variable_values(), self.function_wrapper.maximum_decision_variable_values())
             self._points(self.__agents)
             self.__nest()
 
