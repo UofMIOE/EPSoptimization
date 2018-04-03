@@ -41,7 +41,7 @@ class CuckooSearch(BaseAlgorithm):
         v = np.array([normalvariate(0, 1) for k in range(dimension)])
         step = u / abs(v) ** (1 / beta)
 
-        #Initialize nest locations
+
 #        self.__agents = list()
 #        for j in range(n):
 #            oneAgent= list()
@@ -57,10 +57,11 @@ class CuckooSearch(BaseAlgorithm):
 #            self.__nests.append(oneNest)
 #        self.__nests = np.array(self.__nests)
 
+        #Initialize nest locations
         self.__agents = np.random.uniform(self.function_wrapper.minimum_decision_variable_values()[0], self.function_wrapper.maximum_decision_variable_values()[0], (n, dimension))
         self.__nests = np.random.uniform(self.function_wrapper.minimum_decision_variable_values()[0], self.function_wrapper.maximum_decision_variable_values()[0], (nest, dimension))
         Pbest = self.__nests[np.array([self.function_wrapper.objective_function_value(x)
-                                       for x in self.__nests]).argmin()]
+                                       for x in self.__nests]).argmax()]
         Gbest = Pbest
         self._points(self.__agents)
 
@@ -143,10 +144,10 @@ class CuckooSearch(BaseAlgorithm):
             self.__agents[i] += stepsize * np.array([normalvariate(0, 1)
                                                     for k in range(dimension)])
 
-    def get_nests(self):
-        """Return a history of cuckoos nests (return type: list)"""
+    # def get_nests(self):
+    #     """Return a history of cuckoos nests (return type: list)"""
 
-        return self.__Nests
+    #     return self.__Nests
 
     def _set_Gbest(self, Gbest):
         self.__Gbest = Gbest
@@ -154,11 +155,11 @@ class CuckooSearch(BaseAlgorithm):
     def _points(self, agents):
         self.__Positions.append([list(i) for i in agents])
 
-    def get_agents(self):
-        """Returns a history of all agents of the algorithm (return type:
-        list)"""
+    # def get_agents(self):
+    #     """Returns a history of all agents of the algorithm (return type:
+    #     list)"""
 
-        return self.__Positions
+    #     return self.__Positions
 
     def get_Gbest(self):
         """Return the best position of algorithm (return type: list)"""

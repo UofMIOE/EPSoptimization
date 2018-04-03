@@ -137,7 +137,7 @@ for m,n in zip(combination,combinationlabel):
     print("Artificial Bee Colony Search extrema(R):",result2["best_objective_function_value"])
     
     
-    print("==============================================")
+    print("----------------------")
 
     cuckoo_search = CuckooSearch(HLMMwrapper, number_of_variables, objective)
     result3 = cuckoo_search.search(n = number_agents,
