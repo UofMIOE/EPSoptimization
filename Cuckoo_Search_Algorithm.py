@@ -25,8 +25,7 @@ class CuckooSearch(BaseAlgorithm):
         :param ub: upper limits for plot axes        
         """
 
-#        dimension = self.number_of_variables
-        dimension = 2
+        dimension = self.number_of_variables + 1
         super(CuckooSearch, self).__init__(self.function_wrapper, self.number_of_variables, self.objective)
 
         self.__Positions = []
