@@ -329,5 +329,14 @@ while t <= 1000:
     result_ff.append(result8["best_objective_function_value"])
     
     t = t + 1
-    
+
+
+x, ctr, clicks, spend, bidTotal, cpm, cpc = 1, 2, 3, 4, 5, 6, 7
+
+rows = zip(result_ant, result_artificial, result_cuckoo, result_direct, result_hs, result_pso, result_ff)
+with open("data.csv", "w") as fp:
+    wr = csv.writer(fp)
+    for row in zip(rows):
+        wr.writerow(row)
+        
 
