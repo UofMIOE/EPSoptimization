@@ -117,9 +117,9 @@ for m,n in zip(combination,combinationlabel):
                                    pitch_adjusting_rate = pitch_adjusting_rate)
     
     print("Harmony Search X1:",result1["best_decision_variable_values"][0]) 
-    print("Random Intercept for",n[0],m[0])
-    print("Random Intercept for",n[1],m[1])
-    print("Fixed Effect for", n[2],m[2])
+#    print("Random Intercept for",n[0],m[0])
+#    print("Random Intercept for",n[1],m[1])
+#    print("Fixed Effect for", n[2],m[2])
     print("Harmony Search extrema(R):",result1["best_objective_function_value"])
     
     print("----------------------")
@@ -131,9 +131,9 @@ for m,n in zip(combination,combinationlabel):
                                 number_of_fitness_evaluation = number_of_fitness_evaluation)
 
     print("Artificial Bee Colony Search X1:",result2["best_decision_variable_values"][0]) 
-    print("Random Intercept for",n[0],m[0])
-    print("Random Intercept for",n[1],m[1])
-    print("Fixed Effect for", n[2],m[2])
+#    print("Random Intercept for",n[0],m[0])
+#    print("Random Intercept for",n[1],m[1])
+#    print("Fixed Effect for", n[2],m[2])
     print("Artificial Bee Colony Search extrema(R):",result2["best_objective_function_value"])
     
     
@@ -146,9 +146,9 @@ for m,n in zip(combination,combinationlabel):
                                    nest = number_nests)
 
     print("Cuckoo Search X1:",result3["best_decision_variable_values"][0]) 
-    print("Random Intercept for",n[0],m[0])
-    print("Random Intercept for",n[1],m[1])
-    print("Fixed Effect for", n[2],m[2])
+#    print("Random Intercept for",n[0],m[0])
+#    print("Random Intercept for",n[1],m[1])
+#    print("Fixed Effect for", n[2],m[2])
     print("Cuckoo Search extrema(R):",result3["best_objective_function_value"])
     
     

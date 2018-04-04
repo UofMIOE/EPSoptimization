@@ -69,7 +69,7 @@ class CuckooSearch(BaseAlgorithm):
 
             for i in self.__agents:
                 val = randint(0, nest - 1)
-                if self.function_wrapper.objective_function_value(i) < self.function_wrapper.objective_function_value(self.__nests[val]):
+                if self.function_wrapper.objective_function_value(i) > self.function_wrapper.objective_function_value(self.__nests[val]):
                     self.__nests[val] = i
 
             fnests = [(self.function_wrapper.objective_function_value(self.__nests[i]), i) for i in range(nest)]
