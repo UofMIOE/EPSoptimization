@@ -39,11 +39,11 @@ class Direct(BaseAlgorithm):
        x_m = x_L + np.multiply(C,(x_U - x_L))
        # calculate the first f_min
        if self.objective == 'minimization':
-           f_min = np.asscalar(self.function_wrapper.objective_function_value(x_m))
+           f_min = self.function_wrapper.objective_function_value(x_m)
        else:
            # if objective = "maximization" evaluate 1/f(x)
            # max f(x) -> min -f(x)
-           f_min = -1*np.asscalar(self.function_wrapper.objective_function_value(x_m))
+           f_min = -1*self.function_wrapper.objective_function_value(x_m)
        
        nFunc = nFunc + 1
        i_min = 1
@@ -52,7 +52,12 @@ class Direct(BaseAlgorithm):
        # Vector with distances from centerpoint to the vertices
        D = math.sqrt(sum(np.square(L)))
        # Vector with function values
-       F = [f_min]
+       if type(f_min) == np.matrixlib.defmatrix.matrix:
+          f_min = np.asscalar(f_min)
+          F = [f_min]
+       else:
+          F = [f_min]
+          
        D = np.asmatrix([D]).tolist()
        # Row vector of all different distances
        d = D
@@ -149,7 +154,7 @@ class Direct(BaseAlgorithm):
                     else:
                         f_m1 = -1*self.function_wrapper.objective_function_value(x_m1)
                     
-                    f_m1_s = np.asscalar(f_m1)
+                    f_m1_s = f_m1
                     nFunc = nFunc + 1
                     
                     c_m2 = C[:,j] - delta*e_i # centerpoint for new rectangle
@@ -162,14 +167,17 @@ class Direct(BaseAlgorithm):
                     else:
                         f_m2 = -1*self.function_wrapper.objective_function_value(x_m2)
 
-                    f_m2_s = np.asscalar(f_m2)
+                    f_m2_s = f_m2
                     nFunc = nFunc + 1
                     w.append(min(f_m1_s,f_m2_s))
                     # matrix with all rectangle centerpoints
                     C = np.hstack([C,c_m1,c_m2])
                     # vector with function values
-                    F = np.hstack([F,f_m1,f_m2])
-                
+                    if type(f_m1) == np.matrixlib.defmatrix.matrix:
+                        F = np.hstack([F,f_m1,f_m2])
+                    else:
+                        F = np.hstack([F,np.asmatrix([f_m1]),np.asmatrix([f_m2])])
+                        
                 # 4.3 Divide the rectangle containing C(:,j) into thirds along the
                 # dimension in I, starting with the dimension with the lowest
                 # value of w(ii)
