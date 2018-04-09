@@ -1,4 +1,4 @@
-from metaheuristic_algorithms.base_algorithm import BaseAlgorithm
+from base_algorithm import BaseAlgorithm
 import copy
 from math import sqrt, exp
 import random

@@ -1,4 +1,4 @@
-from metaheuristic_algorithms.base_algorithm import BaseAlgorithm
+from base_algorithm import BaseAlgorithm
 import numpy
 from math import exp
 import random
@@ -91,7 +91,7 @@ class SimulatedAnnealing(BaseAlgorithm):
     def __value_for_exp_for_acceptance_probability(self, evaluation_delta, temperature, bolzmann_constant):
         return -evaluation_delta / (bolzmann_constant * temperature)
 
-    # evaluation_delta > energy_norm or -evaluation_delta > energy_norm
+    # evaluation_delta > energy_norm or -> energy_norm
     def __compare_evaluation_delta_with_energy_norm(self, evaluation_delta, energy_norm):
 
         if self.objective == "maximization":

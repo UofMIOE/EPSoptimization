@@ -1,4 +1,4 @@
-from metaheuristic_algorithms.base_algorithm import BaseAlgorithm
+from base_algorithm import BaseAlgorithm
 import random
 
 class SimplifiedParticleSwarmOptimization(BaseAlgorithm):
